@@ -20,3 +20,6 @@ yarn-error.log
 ### Custom ###
 *.lock
 *.log
+# sublimetext
+.phpintel
+.phpintel/*
