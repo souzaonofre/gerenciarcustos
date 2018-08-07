@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="author" content="Onofre Souza <souzaonofre@gmail.com>">
+        <!-- App Title block -->
+        <title>Gerencia de Custos v1.0{% block subtitle %}{% endblock %}</title>
+        <!-- App Styles block -->
+        {% block styles_before %}{% endblock %}
+        <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+        {% block styles_after %}{% endblock %}
+        <!-- end App Styles block -->
+    </head>
+    <body>
+
+      <header>
+        <nav class="navbar navbar-dark navbar-expand-md bg-dark">
+          <a class="navbar-brand" href="#">GerCustos v1.0</a>
+          <button class="navbar-toggler" type="button"
+            data-toggle="collapse"
+            data-target="#navbarMain"
+            aria-controls="navbarMain"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarMain">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">DashBoard</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Movimenta&ccedil;&otilde;es</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Departamentos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Usu&aacute;rios</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Sobre</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      <main role="main">
+        <!-- App Body content block -->
+        {% block body %}{% endblock %}
+        <!-- end Body content block -->
+      </main>
+
+      <!-- App Scripts block -->
+      {% block scripts_before %}{% endblock %}
+      <script src="{{ asset('build/manifest.js') }}"></script>
+      <script src="{{ asset('build/app.js') }}"></script>
+      {% block scripts_after %}{% endblock %}
+      <!-- end App Scripts block -->
+
+    </body>
+</html>
