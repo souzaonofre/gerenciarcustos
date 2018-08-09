@@ -56,7 +56,11 @@ class Movimentacao
 
     public function setData(\DateTimeInterface $data): self
     {
-        $this->data = $data;
+        if ($data) {
+            $this->data = $data;
+        } else {
+            $this->data = new \DateTime("now")
+        }
 
         return $this;
     }

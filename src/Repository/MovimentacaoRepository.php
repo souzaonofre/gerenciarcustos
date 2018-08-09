@@ -19,32 +19,31 @@ class MovimentacaoRepository extends ServiceEntityRepository
         parent::__construct($registry, Movimentacao::class);
     }
 
-//    /**
-//     * @return Movimentacao[] Returns an array of Movimentacao objects
-//     */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Movimentacao[] Returns an array of Movimentacao objects
+     */
+    public function lastedEntries()
     {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('m.id', 'ASC')
+        return $this->createQueryBuilder('mov')
+            ->orderBy('mov.data', 'DSC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Movimentacao
+
+    /**
+     * @return Movimentacao Returns one Movimentacao entry
+     */
+    public function findEntryById($idValue): ?Movimentacao
     {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
+        return $this->createQueryBuilder('mov')
+            ->andWhere('mov.id = :id_value')
+            ->setParameter('id_value', $idValue)
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
-    */
+
 }
