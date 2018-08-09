@@ -17,9 +17,24 @@ class Movimentacao
     private $id;
 
     /**
+     * @ORM\Column(type="datetime")
+     */
+    private $data;
+
+    /**
+     * @ORM\Column(type="string", length=200)
+     */
+    private $fornecedor;
+
+    /**
      * @ORM\Column(type="string", length=250)
      */
     private $descricao;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2)
+     */
+    private $valor;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Funcionario", inversedBy="movimentacoes", cascade={"persist", "remove"})
@@ -27,14 +42,35 @@ class Movimentacao
      */
     private $funcionario;
 
-    /**
-     * @ORM\Column(type="decimal", precision=10, scale=2)
-     */
-    private $valor;
+
 
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getData(): ?\DateTimeInterface
+    {
+        return $this->data;
+    }
+
+    public function setData(\DateTimeInterface $data): self
+    {
+        $this->data = $data;
+
+        return $this;
+    }
+
+    public function getFornecedor(): ?string
+    {
+        return $this->fornecedor;
+    }
+
+    public function setFornecedor(string $fornecedor): self
+    {
+        $this->fornecedor = $fornecedor;
+
+        return $this;
     }
 
     public function getDescricao(): ?string
@@ -45,6 +81,18 @@ class Movimentacao
     public function setDescricao(string $descricao): self
     {
         $this->descricao = $descricao;
+
+        return $this;
+    }
+
+    public function getValor()
+    {
+        return $this->valor;
+    }
+
+    public function setValor($valor): self
+    {
+        $this->valor = $valor;
 
         return $this;
     }
@@ -61,15 +109,4 @@ class Movimentacao
         return $this;
     }
 
-    public function getValor()
-    {
-        return $this->valor;
-    }
-
-    public function setValor($valor): self
-    {
-        $this->valor = $valor;
-
-        return $this;
-    }
 }
