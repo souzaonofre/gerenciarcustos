@@ -59,7 +59,7 @@ class Movimentacao
         if ($data) {
             $this->data = $data;
         } else {
-            $this->data = new \DateTime("now")
+            $this->data = new \DateTime("now");
         }
 
         return $this;
