@@ -85,7 +85,7 @@ class Funcionario
 
     public function setSenha(?string $senha): self
     {
-        $this->senha = $senha;
+        $this->senha = password_hash($senha, PASSWORD_BCRYPT, ['cost'=>12]);
 
         return $this;
     }

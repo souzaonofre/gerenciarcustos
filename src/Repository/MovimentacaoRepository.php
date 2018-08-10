@@ -25,7 +25,7 @@ class MovimentacaoRepository extends ServiceEntityRepository
     public function lastedEntries()
     {
         return $this->createQueryBuilder('mov')
-            ->orderBy('mov.data', 'DSC')
+            ->orderBy('mov.data', 'DESC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
