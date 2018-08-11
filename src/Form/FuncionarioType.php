@@ -11,11 +11,13 @@ class FuncionarioType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $widgets_attrs = array('class' => 'form-control');
+
         $builder
-            ->add('nome')
-            ->add('email')
-            ->add('senha')
-            ->add('departamento')
+            ->add('nome', null, array('attr' => $widgets_attrs))
+            ->add('email', null, array('attr' => $widgets_attrs))
+            ->add('senha', null, array('attr' => $widgets_attrs))
+            ->add('departamento', null, array('attr' => $widgets_attrs))
         ;
     }
 

@@ -8,11 +8,11 @@
         <h2>Movimenta&ccedil;&otilde;es</h2>
 
         <div id="btn-new-mov" class="pt-3">
-            <a href="{{ path('movimentacao_new') }}" role="button" class="btn btn-primary">Nova entrada</a>
+            <a href="{{ path('movimentacao_new') }}" role="button" class="btn btn-primary">Adicionar</a>
         </div>
 
         <div id="mov-table" class="pt-3">
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>Data</th>
@@ -30,13 +30,14 @@
                         <td>{{ movimentacao.descricao }}</td>
                         <td>{{ movimentacao.valor }}</td>
                         <td>
+                            <a href="{{ path('movimentacao_show', {'id': movimentacao.id}) }}">Detalhes</a>
                             <a href="{{ path('movimentacao_edit', {'id': movimentacao.id}) }}">Editar</a>
                             <a href="{{ path('movimentacao_del', {'id': movimentacao.id}) }}">Excluir</a>
                         </td>
                     </tr>
                 {% else %}
                     <tr>
-                        <td colspan="6">sem registros ainda...</td>
+                        <td colspan="5">sem registros no momento...</td>
                     </tr>
                 {% endfor %}
                 </tbody>

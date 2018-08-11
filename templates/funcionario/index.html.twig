@@ -1,39 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Funcionario index{% endblock %}
+{% block subtitle %} - Funcionarios{% endblock %}
 
 {% block body %}
-    <h1>Funcionario index</h1>
+    <div class="container pt-5">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Senha</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for funcionario in funcionarios %}
-            <tr>
-                <td>{{ funcionario.id }}</td>
-                <td>{{ funcionario.nome }}</td>
-                <td>{{ funcionario.email }}</td>
-                <td>{{ funcionario.senha }}</td>
-                <td>
-                    <a href="{{ path('funcionario_show', {'id': funcionario.id}) }}">show</a>
-                    <a href="{{ path('funcionario_edit', {'id': funcionario.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <h2>Funcion&aacute;rios</h2>
 
-    <a href="{{ path('funcionario_new') }}">Create new</a>
+        <div id="btn-new-mov" class="pt-3">
+            <a href="{{ path('funcionario_new') }}" role="button" class="btn btn-primary">Adicionar</a>
+        </div>
+
+        <div id="func-table" class="pt-3">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>A&ccedil;&otilde;es</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for funcionario in funcionarios %}
+                    <tr>
+                        <td>{{ funcionario.nome }}</td>
+                        <td>{{ funcionario.email }}</td>
+                        <td>
+                            <a href="{{ path('funcionario_show', {'id': funcionario.id}) }}">Detalhes</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">sem registros no momento...</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
 {% endblock %}

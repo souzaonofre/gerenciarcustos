@@ -14,7 +14,7 @@ class MovimentacaoType extends AbstractType
     {
         $date_widget_attrs = array('class' => 'form-group');
 
-        $widgets_attrs = array('class' => 'form-control pt-4');
+        $widgets_attrs = array('class' => 'form-control');
 
         $builder
             ->add('data', DateType::class, array('attr' => $date_widget_attrs, 'format' => 'dd-MM-yyyy'))

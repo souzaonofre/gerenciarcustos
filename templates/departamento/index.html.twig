@@ -3,35 +3,40 @@
 {% block title %}Departamento index{% endblock %}
 
 {% block body %}
-    <h1>Departamento index</h1>
+    <div class="container pt-5">
+    <h2>Departamentos</h2>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Descricao</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for departamento in departamentos %}
-            <tr>
-                <td>{{ departamento.id }}</td>
-                <td>{{ departamento.nome }}</td>
-                <td>{{ departamento.descricao }}</td>
-                <td>
-                    <a href="{{ path('departamento_show', {'id': departamento.id}) }}">show</a>
-                    <a href="{{ path('departamento_edit', {'id': departamento.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div id="btn-new-mov" class="pt-3">
+        <a href="{{ path('departamento_new') }}" role="button" class="btn btn-primary">Adicionar</a>
+    </div>
 
-    <a href="{{ path('departamento_new') }}">Create new</a>
+    <div id="mov-table" class="pt-3">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Descricao</th>
+                    <th>A&ccedil;&otilde;es</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for departamento in departamentos %}
+                <tr>
+                    <td>{{ departamento.nome }}</td>
+                    <td>{{ departamento.descricao }}</td>
+                    <td>
+                        <a href="{{ path('departamento_show', {'id': departamento.id}) }}">Detalhes</a>
+                        <a href="{{ path('departamento_edit', {'id': departamento.id}) }}">Editar</a>
+                        <a href="{{ path('departamento_del', {'id': departamento.id}) }}">Remover</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">sem registros no momento...</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
 {% endblock %}

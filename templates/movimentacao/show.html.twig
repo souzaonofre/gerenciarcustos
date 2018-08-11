@@ -3,36 +3,46 @@
 {% block title %}Movimentacao{% endblock %}
 
 {% block body %}
-    <h1>Movimentacao</h1>
+    <div class="container pt-5">
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ movimentacao.id }}</td>
-            </tr>
-            <tr>
-                <th>Data</th>
-                <td>{{ movimentacao.data ? movimentacao.data|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Fornecedor</th>
-                <td>{{ movimentacao.fornecedor }}</td>
-            </tr>
-            <tr>
-                <th>Descricao</th>
-                <td>{{ movimentacao.descricao }}</td>
-            </tr>
-            <tr>
-                <th>Valor</th>
-                <td>{{ movimentacao.valor }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <h2>Movimenta&ccedil;&otilde;o</h2>
 
-    <a href="{{ path('movimentacao_index') }}">back to list</a>
+    <div class="pt-3">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ movimentacao.id }}</td>
+                </tr>
+                <tr>
+                    <th>Data</th>
+                    <td>{{ movimentacao.data ? movimentacao.data|date('Y-m-d H:i:s') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Fornecedor</th>
+                    <td>{{ movimentacao.fornecedor }}</td>
+                </tr>
+                <tr>
+                    <th>Descricao</th>
+                    <td>{{ movimentacao.descricao }}</td>
+                </tr>
+                <tr>
+                    <th>Valor</th>
+                    <td>{{ movimentacao.valor }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-    <a href="{{ path('movimentacao_edit', {'id': movimentacao.id}) }}">edit</a>
+    <div class="pt-3">
+        <a href="{{ path('movimentacao_index') }}">Retornar</a>
+        <a href="{{ path('movimentacao_edit', {'id': movimentacao.id}) }}">Editar</a>
+    </div>
 
-    {{ include('movimentacao/_delete_form.html.twig') }}
+    <div class="pt-3">
+        {{ include('movimentacao/_delete_form.html.twig') }}
+    </div>
+
+    </div>
+
 {% endblock %}
