@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Entity\Movimentacao;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * @method Movimentacao|null find($id, $lockMode = null, $lockVersion = null)
@@ -43,6 +45,19 @@ class MovimentacaoRepository extends ServiceEntityRepository
             ->setParameter('id_value', $idValue)
             ->getQuery()
             ->getOneOrNullResult()
+        ;
+    }
+
+    /**
+     * @return Movimentacao Returns one Movimentacao entry
+     */
+    public function findEntryByFunc($funcId)
+    {
+        return $this->createQueryBuilder('mov')
+            ->andWhere('mov.funcionario_id = :func_id')
+            ->setParameter('func_id', $funcId)
+            ->getQuery()
+            ->getResult()
         ;
     }
 

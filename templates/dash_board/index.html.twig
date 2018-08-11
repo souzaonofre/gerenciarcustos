@@ -18,12 +18,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
+        {% for movimentacao in movimentacoes_le %}
+          <tr>
+            <td>{{ movimentacao.data ? movimentacao.data|date('d/m/Y') : '' }}</td>
+            <td>{{ movimentacao.fornecedor }}</td>
+            <td>{{ movimentacao.descricao }}</td>
+            <td>{{ movimentacao.valor }}</td>
+          </tr>
+        {% else %}
+          <tr>
+            <td colspan="6">sem registros ainda...</td>
+          </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>

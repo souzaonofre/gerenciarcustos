@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block subtitle %} - Movimenta&ccedil;&otilde;es{% endblock %}
+
+{% block body %}
+    <div class="container pt-5">
+
+        <h2>Movimenta&ccedil;&otilde;es</h2>
+
+        <div id="btn-new-mov" class="pt-3">
+            <a href="{{ path('movimentacao_new') }}" role="button" class="btn btn-primary">Nova entrada</a>
+        </div>
+
+        <div id="mov-table" class="pt-3">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Fornecedor</th>
+                        <th>Descricao</th>
+                        <th>Valor</th>
+                        <th>A&ccedil;&otilde;es</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for movimentacao in movimentacoes %}
+                    <tr>
+                        <td>{{ movimentacao.data ? movimentacao.data|date('d/m/Y') : '' }}</td>
+                        <td>{{ movimentacao.fornecedor }}</td>
+                        <td>{{ movimentacao.descricao }}</td>
+                        <td>{{ movimentacao.valor }}</td>
+                        <td>
+                            <a href="{{ path('movimentacao_edit', {'id': movimentacao.id}) }}">Editar</a>
+                            <a href="{{ path('movimentacao_del', {'id': movimentacao.id}) }}">Excluir</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">sem registros ainda...</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
